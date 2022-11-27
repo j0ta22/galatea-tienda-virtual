@@ -1,0 +1,31 @@
+{% extends "tienda/base.html" %}
+
+{% block title %} Tienda {% endblock %}
+
+{% load static %}
+
+{% block content %}
+<div class="container">
+  <div style="float: right;">
+    {% if request.user.is_authenticated %}
+      {% include "carrito/widget.html" %}
+    {% endif %}
+  </div>
+  <div class="row">
+  {% for articulo in articulos %}
+  <div class="col align-self-start">  
+    <div class="card" style="width: 14rem; margin-bottom: 2rem;">
+      <img class="card-img-top" src="{{articulo.imagen.url}}" alt="Card image cap">
+      <div class="card-body">
+        <h5 class="card-title">{{articulo.nombre}}</h5>
+        <p class="card-text">{{articulo.categoria}}</p>
+        <p class="card-text">{{articulo.detalle}}</p>
+        <p class="card-text">${{articulo.precio}}</p>
+        <a href="{% url 'carrito:agregar' articulo.id %}" class="btn btn-success">Agregar al carrito</a>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+  </div>
+</div>
+{% endblock %} 

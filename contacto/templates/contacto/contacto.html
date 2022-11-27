@@ -1,0 +1,42 @@
+{% extends "tienda/base.html" %}
+
+{% block title %} Contacto {% endblock %}
+
+{% load static %}
+
+{% block content %}
+
+<!--<section class="page-section cta">
+    <div class="container">
+      <div class="row">
+        <div class="col-xl-9 mx-auto">
+          <div class="cta-inner text-center rounded">
+            {% if "Valido" in request.GET %}
+                <h3>Informacion recibida correctamente</h3>
+            {% endif %}
+            <form action="" method="POST" style="text-align: left;">
+                {% csrf_token %}
+                <table style="margin: 20px auto;">
+                    {{formulario.as_table}}
+                </table>
+                <input type="submit" value="Enviar" style="width: 100px;">
+            </form>  
+          </div>
+        </div>
+      </div>
+    </div>
+</section>-->
+
+    <div>
+        {% if "Valido" in request.GET %}
+            <h3>Informacion recibida correctamente</h3>
+        {% endif %}
+        <form action="" method="POST" style="text-align: left; color: cornsilk;">
+            {% csrf_token %}
+            <table style="margin: 20px auto;">
+                {{formulario.as_table}}
+            </table>
+            <input type="submit" value="Enviar" style="width: 150px; margin-left: 24rem;">
+        </form>
+    </div>
+{% endblock %} 

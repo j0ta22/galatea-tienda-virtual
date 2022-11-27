@@ -1,0 +1,74 @@
+{% extends "tienda/base.html" %}
+
+{% block title %} Blog {% endblock %}
+
+{% load static %}
+
+{% block content %}
+    {% for post in posts %}
+
+    <section class="page-section cta">
+      <div class="container">
+        <div class="row">
+          <div class="col-xl-9 mx-auto">
+            <div class="cta-inner text-center rounded">
+              <img class="intro-img img-fluid mb-3 mb-lg-0 rounded" src="{{post.imagen.url}}" alt="">
+              <h2 class="section-heading mb-4">
+                <p>
+                  <span class="section-heading-upper">{{post.contenido}}</span>
+                </p>
+                <p>
+                  <span class="section-heading-upper">Autor: {{post.autor}}</span>
+                </p>
+                <p> 
+                  <span class="section-heading-lower">{{post.categorias}}</span>
+                </p>
+              </h2>
+            </div>
+          </div>
+        </div>
+      </div> 
+    </section>
+
+    <!--<section class="page-section clearfix">
+        <div class="container">
+          <div class="intro">
+            <img class="intro-img img-fluid mb-3 mb-lg-0 rounded" src="{{post.imagen.url}}" alt="">
+            <div class="intro-text left-0 text-center bg-faded p-5 rounded">
+              <h2 class="section-heading mb-4" >
+                <span class="section-heading-lower">{{post.titulo}}</span>
+             </h2>
+             <p>
+              <span class="section-heading-upper">{{post.contenido}}</span>
+             </p>
+             <p>
+              <span class="section-heading-upper">Autor: {{post.autor}}</span>
+             </p>
+             <p> 
+              <span class="section-heading-lower">{{post.categorias}}</span>
+             </p>
+            </div>
+          </div>
+        </div>
+    </section>-->
+  
+
+    {% endfor %}
+
+
+    <section>
+      <div><p>
+        Categorias:
+        {% for post in posts %}
+
+          {%for categoria in post.categorias.all %}
+        
+            <a href= "{% url 'categorias' categoria.id %}" class="links-categoria">{{categoria.nombre}}</a>&nbsp;&nbsp;&nbsp;
+          
+          {% endfor %}
+
+        {% endfor %}
+      </p></div>
+    </section>  
+{% endblock %} 
+
